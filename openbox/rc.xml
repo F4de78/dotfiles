@@ -173,6 +173,13 @@
     <moveButton>Middle</moveButton>
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
+  <!-- switch monitor -->
+  <keybind key="A-2">
+  <action name="MoveResizeTo">
+    <monitor>2</monitor>
+  </action>
+</keybind>
+  <!-- snap window -->
   <keyboard>
     <keybind key="A-a">
       <action name="UnmaximizeFull"/>
@@ -391,6 +398,11 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+        <keybind key="C-A-t">
+      <action name="Execute">
+        <command>terminator</command>
+      </action>
+    </keybind>
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
