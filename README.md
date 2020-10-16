@@ -12,5 +12,5 @@
 - **file explorer** SpaceWM
 - **terminal** terminator
 - **vim**:
--- [NERDmenu](https://github.com/preservim/nerdtree)
--- [lightline](https://github.com/itchyny/lightline.vim)
+  - [NERDmenu](https://github.com/preservim/nerdtree)
+  - [lightline](https://github.com/itchyny/lightline.vim)
