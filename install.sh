@@ -16,6 +16,9 @@ sudo dnf install -y feh
 sudo dnf install -y go
 sudo dnf install -y git
 sudo dnf install -y qpdf #pdf
+sudo dnf install -y leafpad
+#openbox set as default
+openbox --replace & exit .
 
 #set default applications
 
