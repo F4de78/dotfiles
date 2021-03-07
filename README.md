@@ -2,7 +2,7 @@
 
 #### My shitty dotfiles
 
-- **OS** Fedora 33
+- **OS** Fedora 33 / Debian 10
 - **shell:**  zsh (oh-my-zsh) 
 - **oh-my-zsh theme**: agnoster
 - **DE**: XFCE
@@ -17,5 +17,10 @@
   - [lightline](https://github.com/itchyny/lightline.vim)
 
 ## Install
+install.sh supports Fedora and Debian
 
 run install.sh to update repos, installs dependencies and copy configuartions files in the corrects directories.
+
+## Notes for future me :)
+
+[Laptop NIC drivers](https://github.com/tomaspinho/rtl8821ce)

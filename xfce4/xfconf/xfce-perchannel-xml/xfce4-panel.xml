@@ -8,7 +8,7 @@
       <property name="position" type="string" value="p=8;x=1920;y=1069"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
-      <property name="icon-size" type="uint" value="16"/>
+      <property name="icon-size" type="uint" value="0"/>
       <property name="size" type="uint" value="20"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
@@ -35,11 +35,13 @@
       <property name="output-name" type="string" value="Primary"/>
       <property name="autohide-behavior" type="uint" value="0"/>
       <property name="disable-struts" type="bool" value="false"/>
+      <property name="background-style" type="uint" value="0"/>
     </property>
   </property>
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="applicationsmenu">
       <property name="button-icon" type="string" value="distributor-logo-fedora"/>
+      <property name="button-title" type="string" value=""/>
     </property>
     <property name="plugin-2" type="string" value="tasklist">
       <property name="grouping" type="uint" value="0"/>
@@ -62,6 +64,9 @@
       <property name="show-frame" type="bool" value="false"/>
       <property name="square-icons" type="bool" value="true"/>
       <property name="names-ordered" type="array">
+        <value type="string" value="obs"/>
+        <value type="string" value="thunar"/>
+        <value type="string" value="vlc"/>
         <value type="string" value="seapplet"/>
         <value type="string" value="pragha music player"/>
         <value type="string" value="zoom"/>
@@ -126,7 +131,7 @@
     <property name="plugin-16" type="string" value="separator"/>
     <property name="plugin-17" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="firefox.instance2179;firefox.instance3117;firefox.instance4994;firefox.instance6727;firefox.instance8736;pragha;spotify"/>
+      <property name="mpris-players" type="string" value="firefox.instance2179;firefox.instance2269;firefox.instance2289;firefox.instance2325;firefox.instance2326;firefox.instance2335;firefox.instance2380;firefox.instance2387;firefox.instance2473;firefox.instance2488;firefox.instance2538;firefox.instance2588;firefox.instance2607;firefox.instance2766;firefox.instance3068;firefox.instance3117;firefox.instance3349;firefox.instance3467;firefox.instance3482;firefox.instance3490;firefox.instance3500;firefox.instance3634;firefox.instance3649;firefox.instance3650;firefox.instance3699;firefox.instance4994;firefox.instance5013;firefox.instance52410;firefox.instance52754;firefox.instance6727;firefox.instance7906;firefox.instance8736;firefox.instance98429;pragha;spotify;vlc"/>
     </property>
   </property>
 </channel>

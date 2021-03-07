@@ -1,22 +1,28 @@
-#upgrade
+#!/bin/bash
 
-sudo dnf update -y
-sudo dnf upgrade -y
+$DISTROINFO
+$DISTRO
+$PM
 
-#dnf install
+#get distro name
+DISTROINFO=$( (lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null| head -n1);
 
-sudo dnf install -y spacefm #file mangaer
-sudo dnf install -y openbox
-sudo dnf install -y ob-conf
-sudo dnf install -y vlc
-sudo dnf install -y flatpak
-sudo dnf install -y zsh
-sudo dnf install -y chsh
-sudo dnf install -y feh
-sudo dnf install -y go
-sudo dnf install -y git
-sudo dnf install -y qpdf #pdf
-sudo dnf install -y leafpad
+if [[ $DISTROINFO == *"Fedora"* ]]; then
+  PM="dnf"
+  DISTRO="Fedora"
+elif [[ $DISTROINFO == *"Debian"* ]]; then
+  PM="apt"
+  DISTRO="Debian"
+else
+  echo "Distro not supported"
+  exit 
+fi
+
+sudo $PM -y update 
+sudo $PM -y upgrade
+
+sudo $PM install -y terminator spacefm openbox ob-conf vlc flatpak zsh chsh feh go git qpdf leafpad
+
 #openbox set as default
 openbox --replace & exit .
 
@@ -27,26 +33,34 @@ xdg-mime default qpdf.desktop application/pdf
 xdg-mime default feh.desktop image/*
 
 #vscodium
-sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg 
-printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo
-sudo dnf install -y codium
+if (( DISTRO == "Fedora" )); then
+  sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg 
+  printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo
+  sudo dnf install -y codium
+elif (( DISTRO == "Debian" )); then
+  wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dear
+  echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list 
+  sudo apt update && sudo apt install codium 
+fi
 
 #theme 
-sudo dnf install -y qt5-qtbase qt5-qtbase-gui qt5-qtsvg qt5-qtdeclarative qt5-qtquickcontrols
-#https://www.opendesktop.org/p/1136805/
+sudo $PM install -y qt5-qtbase qt5-qtbase-gui qt5-qtsvg qt5-qtdeclarative qt5-qtquickcontrols
+sudo $PM install arc-theme
 
 #gdb GEF
 touch ~/.gdbinit #not sure if needed
-sudo dnf install -y curl
+sudo $PM install -y curl
 sh -c "$(curl -fsSL http://gef.blah.cat/sh)"
 
 #copy files 
 cp -r openbox ~/.config
 cp -r xfce4 ~/.config
+cp -r terminator ~/.config
+cp -r rofi ~/.config
 cp -r .zshrc ~/
 cp -r .bashrc ~/
 cp -r .vimrc ~/
-cp -r .gdbinit
+cp -r .gdbinit ~/
 
 #oh-my-zsh & set zsh as default
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -55,3 +69,5 @@ chsh -s $(which zsh)
 #todo
 echo "to install manualy: qrcp, arc-theme from opendesktop"
 
+
+ 

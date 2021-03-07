@@ -175,10 +175,10 @@
   </dock>
   <!-- switch monitor -->
   <keybind key="A-2">
-  <action name="MoveResizeTo">
-    <monitor>2</monitor>
-  </action>
-</keybind>
+    <action name="MoveResizeTo">
+      <monitor>2</monitor>
+    </action>
+  </keybind>
   <!-- snap window -->
   <keyboard>
     <keybind key="A-a">
@@ -397,10 +397,31 @@
         <direction>down</direction>
       </action>
     </keybind>
+    <!-- keybindings for volume and multimedia buttons -->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer set Master 5%+</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer set Master 5%-</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>amixer set Master toggle</command>
+      </action>
+    </keybind>
     <!-- Keybindings for running applications -->
-        <keybind key="C-A-t">
+    <keybind key="C-A-t">
       <action name="Execute">
         <command>terminator</command>
+      </action>
+    </keybind>
+    <keybind key="A-F2">
+      <action name="Execute">
+        <command>rofi -show drun</command>
       </action>
     </keybind>
     <keybind key="W-e">

@@ -1,1 +1,3 @@
-(sleep 2s && tint2) &
+nitrogen --restore &
+#(sleep 2s && ~/.config/polybar/launch.sh) &
+(sleep 2s && tint2 -c ~/.config/tint2/tint2rc) &
